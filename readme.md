@@ -14,6 +14,9 @@ Seu backend foi organizado utilizando o padrão MSC (Model-Service-Controller) e
 - Sequelize
 
 ## Front end
+- Javascript
+- Vue 3
+- Vuetify 3
 
 ## Banco de dados
 - postgreSQL
@@ -35,12 +38,12 @@ docker compose build
 docker compose up -d
 
 # acessar a url da aplicação
-URL
+http://localhost:4173/
 ```
 
 # Portas utilizadas
 - Backend: 3000
-- Frontend: 
+- Frontend: 4173
 - PostgreSQL: 5432
 
 # Autor
