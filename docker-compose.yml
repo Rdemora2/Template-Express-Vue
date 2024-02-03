@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    container_name: db-task-manager
+    environment:
+      POSTGRES_DB: task_manager
+      POSTGRES_USER: rdemora2
+      POSTGRES_PASSWORD: rdemora2
+    ports:
+      - "5432:5432"
+
+  node-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: node-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app/backend
