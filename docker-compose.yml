@@ -3,7 +3,7 @@ version: '3'
 services:
   postgres:
     image: postgres
-    container_name: db-task-manager
+    container_name: db-template
     environment:
       POSTGRES_DB: task_manager
       POSTGRES_USER: rdemora2
@@ -11,14 +11,24 @@ services:
     ports:
       - "5432:5432"
 
-  node-api:
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: node-api
+    container_name: backend-template
     ports:
       - "3000:3000"
     depends_on:
       - postgres
     volumes:
       - ./backend:/app/backend
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-template
+    ports:
+      - "5000:5000"
+    depends_on:
+      - backend

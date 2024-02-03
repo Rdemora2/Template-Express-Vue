@@ -38,12 +38,12 @@ docker compose build
 docker compose up -d
 
 # acessar a url da aplicação
-http://localhost:4173/
+http://localhost:5000/
 ```
 
 # Portas utilizadas
 - Backend: 3000
-- Frontend: 4173
+- Frontend: 5000
 - PostgreSQL: 5432
 
 # Autor
