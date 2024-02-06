@@ -6,6 +6,8 @@
                     <v-card-title class="headline">Bem-vindo de volta!</v-card-title>
                     <v-card-subtitle class="mb-4">Faça login na sua conta</v-card-subtitle>
 
+                    <v-alert v-if="error" type="error" class="mb-4">{{ error }}</v-alert>
+
                     <v-form @submit.prevent="login">
                         <v-text-field v-model="email" label="E-mail" required></v-text-field>
                         <v-text-field v-model="password" label="Senha" type="password" required></v-text-field>
@@ -28,6 +30,7 @@ export default {
         return {
             email: '',
             password: '',
+            error: null,
         };
     },
     methods: {
@@ -44,7 +47,7 @@ export default {
 
                 this.$router.push('/');
             } catch (error) {
-                console.error('Error during login:', error);
+                this.error = 'Erro durante o login: ' + error.message;
             }
         },
     },

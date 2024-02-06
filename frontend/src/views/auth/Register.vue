@@ -5,6 +5,8 @@
                 <v-card class="register-card" elevation="3">
                     <v-card-title class="headline">Crie sua conta</v-card-title>
 
+                    <v-alert v-if="error" type="error" class="mb-4">{{ error }}</v-alert>
+
                     <v-form @submit.prevent="registerUser">
                         <v-text-field v-model="name" label="Nome" required></v-text-field>
                         <v-text-field v-model="email" label="E-mail" required></v-text-field>
@@ -29,6 +31,7 @@ export default {
             name: '',
             email: '',
             password: '',
+            error: null,
         };
     },
     methods: {
@@ -46,7 +49,7 @@ export default {
 
                 this.$router.push('/login');
             } catch (error) {
-                console.error('Error during registration:', error);
+                this.error = 'Erro durante o registro: ' + error.message;
             }
         },
     },
