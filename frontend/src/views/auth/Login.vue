@@ -9,9 +9,10 @@
                     <v-alert v-if="error" type="error" class="mb-4">{{ error }}</v-alert>
 
                     <v-form @submit.prevent="login">
-                        <v-text-field v-model="email" label="E-mail" required></v-text-field>
-                        <v-text-field v-model="password" label="Senha" type="password" required></v-text-field>
-                        <v-btn type="submit" color="success" block>Entrar</v-btn>
+                        <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                        <v-text-field v-model="password" :rules="passwordRules" label="Senha" type="password"
+                            required></v-text-field>
+                        <v-btn type="submit" color="success" dark block>Entrar</v-btn>
                     </v-form>
 
                     <router-link to="/register">Ainda não tem uma conta? Registre-se aqui.</router-link>
@@ -31,6 +32,14 @@ export default {
             email: '',
             password: '',
             error: null,
+            emailRules: [
+                v => !!v || 'E-mail é obrigatório',
+                v => /.+@.+\..+/.test(v) || 'E-mail deve ser válido',
+            ],
+            passwordRules: [
+                v => !!v || 'Senha é obrigatória',
+                v => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(v) || 'Senha deve conter letras maiúsculas, minúsculas, números e caracteres especiais',
+            ],
         };
     },
     methods: {
