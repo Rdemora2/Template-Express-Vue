@@ -1,0 +1,77 @@
+<template>
+    <v-container fluid class="register-container">
+        <v-row align="center" justify="center">
+            <div>
+                <v-card class="register-card" elevation="3">
+                    <v-card-title class="headline">Crie sua conta</v-card-title>
+
+                    <v-form @submit.prevent="registerUser">
+                        <v-text-field v-model="name" label="Nome" required></v-text-field>
+                        <v-text-field v-model="email" label="E-mail" required></v-text-field>
+                        <v-text-field v-model="password" label="Senha" type="password" required></v-text-field>
+                        <v-btn type="submit" color="primary" block>Registrar</v-btn>
+                    </v-form>
+
+                    <router-link to="/login">Já tem uma conta? Faça login aqui.</router-link>
+                </v-card>
+            </div>
+        </v-row>
+    </v-container>
+</template>
+  
+<script>
+import { registerUser } from '@/api/authApi';
+
+export default {
+    name: 'Register',
+    data() {
+        return {
+            name: '',
+            email: '',
+            password: '',
+        };
+    },
+    methods: {
+        async registerUser() {
+            try {
+                const registrationData = {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                };
+
+                const registeredUser = await registerUser(registrationData);
+
+                console.log('User registered:', registeredUser);
+
+                this.$router.push('/login');
+            } catch (error) {
+                console.error('Error during registration:', error);
+            }
+        },
+    },
+};
+</script>
+  
+<style scoped>
+.register-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.headline {
+    font-size: 24px;
+    font-weight: bold;
+}
+</style>
+  
