@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 const User = require('../models/User');
 
-// Rota de cadastro
 router.post(
   '/register',
   [
@@ -15,7 +14,6 @@ router.post(
     check('name').notEmpty(),
   ],
   async (req, res) => {
-    // Validação de entrada usando express-validator
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -71,6 +69,14 @@ router.post('/login', async (req, res) => {
     console.error(error);
     return res.status(500).json({ error: 'Erro ao fazer login' });
   }
+});
+
+router.get('/validate-token', authenticationMiddleware, (req, res) => {
+  res.status(200).json({ message: 'Token válido' });
+});
+
+router.post('/revoke-token', authenticationMiddleware, (req, res) => {
+  res.status(200).json({ message: 'Token revogado com sucesso' });
 });
 
 module.exports = router;
