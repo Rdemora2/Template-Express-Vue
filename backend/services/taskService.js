@@ -1,6 +1,5 @@
 const Task = require('../models/task');
 
-// Função para criar uma nova tarefa
 const createTask = async (title, description, status) => {
   try {
     const task = await Task.create({ title, description, status });
@@ -10,7 +9,6 @@ const createTask = async (title, description, status) => {
   }
 };
 
-// Função para listar todas as tarefas
 const getAllTasks = async () => {
   try {
     const tasks = await Task.findAll();
@@ -20,7 +18,6 @@ const getAllTasks = async () => {
   }
 };
 
-// Função para obter uma tarefa por ID
 const getTaskById = async (taskId) => {
   try {
     const task = await Task.findByPk(taskId);
@@ -30,7 +27,6 @@ const getTaskById = async (taskId) => {
   }
 };
 
-// Função para atualizar uma tarefa por ID
 const updateTask = async (taskId, title, description, status) => {
   try {
     const task = await Task.findByPk(taskId);
@@ -51,7 +47,6 @@ const updateTask = async (taskId, title, description, status) => {
   }
 };
 
-// Função para excluir uma tarefa por ID
 const deleteTask = async (taskId) => {
   try {
     const task = await Task.findByPk(taskId);
@@ -67,7 +62,6 @@ const deleteTask = async (taskId) => {
   }
 };
 
-// Função para buscar tarefas por status
 const getTasksByStatus = async (status) => {
   try {
     const tasks = await Task.findAll({
