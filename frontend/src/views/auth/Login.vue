@@ -47,7 +47,11 @@ export default {
 
                 this.$router.push('/');
             } catch (error) {
-                this.error = 'Erro durante o login: ' + error.message;
+                if (error.response && error.response.status === 401) {
+                    this.error = 'Email ou senha incorreta. Por favor, tente novamente.';
+                } else {
+                    this.error = 'Erro durante o login: ' + error.message;
+                }
             }
         },
     },
