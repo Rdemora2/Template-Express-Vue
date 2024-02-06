@@ -4,16 +4,7 @@
             <div>
                 <v-card class="home-card" elevation="3">
                     <v-card-title class="headline">Bem-vindo à sua aplicação!</v-card-title>
-                    <v-card-subtitle class="mb-4">Escolha uma opção abaixo:</v-card-subtitle>
-
-                    <v-row justify="center">
-                        <v-col cols="12" md="6" class="mb-4">
-                            <v-btn to="/register" color="primary" block>Registrar</v-btn>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <v-btn to="/login" color="success" block>Login</v-btn>
-                        </v-col>
-                    </v-row>
+                    <v-card-subtitle class="mb-4">Sou um template vue.js com backend express</v-card-subtitle>
                 </v-card>
             </div>
         </v-row>

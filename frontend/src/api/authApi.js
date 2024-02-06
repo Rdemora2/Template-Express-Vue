@@ -1,4 +1,3 @@
-// src/api/authApi.js
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/auth';
@@ -19,6 +18,21 @@ export const loginUser = async (userData) => {
     return response.data;
   } catch (error) {
     console.error('Error logging in:', error);
+    throw error;
+  }
+};
+
+export const validateToken = async (token) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/validate-token`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error validating token:', error);
     throw error;
   }
 };
