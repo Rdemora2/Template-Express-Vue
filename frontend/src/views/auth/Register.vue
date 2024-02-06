@@ -61,7 +61,7 @@ export default {
 
                 console.log('User registered:', registeredUser);
 
-                this.$router.push('/login');
+                this.$router.push('/');
             } catch (error) {
                 this.error = 'Erro durante o registro: ' + error.message;
             }
