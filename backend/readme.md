@@ -64,26 +64,6 @@
 }
 ```
 
-## Revogação de Token
-
-**Endpoint:** http://localhost:3000/api/auth/revoke-token
-
-**Método:** POST
-
-**Header:** Authorization: Bearer {token}
-
-**Formato de Requisição:**
-```json
-```
-
-
-**Formato de Resposta:**
-```json
-{
-    "message": "Token revogado com sucesso"
-}
-```
-
 ## Criação de Tarefa
 
 **Endpoint:** http://localhost:3000/api/tasks

@@ -76,8 +76,4 @@ router.get('/validate-token', authenticationMiddleware, (req, res) => {
   res.status(200).json({ message: 'Token válido' });
 });
 
-router.post('/revoke-token', authenticationMiddleware, (req, res) => {
-  res.status(200).json({ message: 'Token revogado com sucesso' });
-});
-
 module.exports = router;
