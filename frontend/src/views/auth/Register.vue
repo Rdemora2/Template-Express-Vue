@@ -8,9 +8,10 @@
                     <v-alert v-if="error" type="error" class="mb-4">{{ error }}</v-alert>
 
                     <v-form @submit.prevent="registerUser">
-                        <v-text-field v-model="name" label="Nome" required></v-text-field>
-                        <v-text-field v-model="email" label="E-mail" required></v-text-field>
-                        <v-text-field v-model="password" label="Senha" type="password" required></v-text-field>
+                        <v-text-field v-model="name" :rules="nameRules" label="Nome" required></v-text-field>
+                        <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                        <v-text-field v-model="password" :rules="passwordRules" label="Senha" type="password"
+                            required></v-text-field>
                         <v-btn type="submit" color="primary" block>Registrar</v-btn>
                     </v-form>
 
@@ -32,6 +33,17 @@ export default {
             email: '',
             password: '',
             error: null,
+            nameRules: [
+                v => !!v || 'Nome é obrigatório',
+            ],
+            emailRules: [
+                v => !!v || 'E-mail é obrigatório',
+                v => /.+@.+\..+/.test(v) || 'E-mail deve ser válido',
+            ],
+            passwordRules: [
+                v => !!v || 'Senha é obrigatória',
+                v => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(v) || 'Senha deve conter letras maiúsculas, minúsculas, números e caracteres especiais',
+            ],
         };
     },
     methods: {
