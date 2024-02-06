@@ -52,6 +52,8 @@ export default {
 
                 const { token } = await loginUser(loginData);
 
+                this.$store.dispatch('saveToken', token);
+
                 console.log('JWT Token:', token);
 
                 this.$router.push('/');

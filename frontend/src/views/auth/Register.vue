@@ -57,6 +57,8 @@ export default {
 
                 const registeredUser = await registerUser(registrationData);
 
+                this.$store.dispatch('saveToken', registeredUser.token);
+
                 console.log('User registered:', registeredUser);
 
                 this.$router.push('/login');
