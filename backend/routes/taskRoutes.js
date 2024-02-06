@@ -5,11 +5,11 @@ const taskController = require('../controllers/taskController');
 
 router.post('/', authenticationMiddleware, taskController.createTask);
 
-router.get('/', taskController.getAllTasks);
+router.get('/', authenticationMiddleware, taskController.getAllTasks);
 
-router.get('/:taskId', taskController.getTaskById);
+router.get('/:taskId', authenticationMiddleware, taskController.getTaskById);
 
-router.get('/status/:status', taskController.getTasksByStatus);
+router.get('/status/:status', authenticationMiddleware, taskController.getTasksByStatus);
 
 router.put('/:taskId', authenticationMiddleware, taskController.updateTask);
 

@@ -44,11 +44,53 @@
 ```
 - OBS: token JWT válido por 1 dia
 
+## Validação de Token
+
+**Endpoint:** http://localhost:3000/api/auth/validate-token
+
+**Método:** GET
+
+**Header:** Authorization: Bearer {token}
+
+**Formato de Requisição:**
+```json
+```
+
+
+**Formato de Resposta:**
+```json
+{
+    "message": "Token válido"
+}
+```
+
+## Revogação de Token
+
+**Endpoint:** http://localhost:3000/api/auth/revoke-token
+
+**Método:** POST
+
+**Header:** Authorization: Bearer {token}
+
+**Formato de Requisição:**
+```json
+```
+
+
+**Formato de Resposta:**
+```json
+{
+    "message": "Token revogado com sucesso"
+}
+```
+
 ## Criação de Tarefa
 
 **Endpoint:** http://localhost:3000/api/tasks
 
 **Método:** POST
+
+**Header:** Authorization: Bearer {token}
 
 **Formato de Requisição:**
 ```json
@@ -56,7 +98,6 @@
     "title": "Nome da Tarefa",
     "description": "Descrição da tarefa",
     "status": "Status da tarefa",
-    "token": "Token de Acesso JWT"
 }
 ```
 - Campos de status Aceitos: 'pendente', 'em andamento', 'concluída'
@@ -79,10 +120,12 @@
 
 **Método:** GET
 
+**Header:** Authorization: Bearer {token}
+
 **Formato de Requisição:**
 ```json
 ```
-- Esse endpoint não necessita de nada na requisição, nem do token, pois serve apenas para visualização das tarefas
+- Esse endpoint não necessita de nada na requisição, pois serve apenas para visualização das tarefas
 
 **Formato de Resposta:**
 ```json
@@ -112,10 +155,12 @@
 
 **Método:** GET
 
+**Header:** Authorization: Bearer {token}
+
 **Formato de Requisição:**
 ```json
 ```
-- Esse endpoint não necessita de nada na requisição, nem do token, pois serve apenas para visualização da tarefa
+- Esse endpoint não necessita de nada na requisição, pois serve apenas para visualização da tarefa
 
 **Formato de Resposta:**
 ```json
@@ -135,10 +180,12 @@
 
 **Método:** GET
 
+**Header:** Authorization: Bearer {token}
+
 **Formato de Requisição:**
 ```json
 ```
-- Esse endpoint não necessita de nada na requisição, nem do token, pois serve apenas para visualização das tarefas
+- Esse endpoint não necessita de nada na requisição, pois serve apenas para visualização das tarefas
 
 **Formato de Resposta:**
 ```json
@@ -168,13 +215,14 @@
 
 **Método:** PUT
 
+**Header:** Authorization: Bearer {token}
+
 **Formato de Requisição:**
 ```json
 {
     "title": "Nome da Tarefa",
     "description": "Descrição da tarefa",
     "status": "Status da tarefa",
-    "token": "Token de Acesso JWT"
 }
 ```
 - Campos de status Aceitos: 'pendente', 'em andamento', 'concluída'
@@ -197,11 +245,10 @@
 
 **Método:** DELETE
 
+**Header:** Authorization: Bearer {token}
+
 **Formato de Requisição:**
 ```json
-{
-  "token": "Token de Acesso JWT"
-}
 ```
 
 **Formato de Resposta:**
