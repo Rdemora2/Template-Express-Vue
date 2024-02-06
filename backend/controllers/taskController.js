@@ -1,12 +1,10 @@
 const taskService = require('../services/taskService');
 
-// Função centralizada para tratamento de erros
 const handleErrors = (res, error, errorMessage) => {
   console.error(error);
   return res.status(500).json({ error: errorMessage });
 };
 
-// Controlador para criar uma nova tarefa
 exports.createTask = async (req, res) => {
   try {
     const { title, description, status } = req.body;
@@ -18,7 +16,6 @@ exports.createTask = async (req, res) => {
   }
 };
 
-// Controlador para listar todas as tarefas
 exports.getAllTasks = async (req, res) => {
   try {
     const tasks = await taskService.getAllTasks();
@@ -29,7 +26,6 @@ exports.getAllTasks = async (req, res) => {
   }
 };
 
-// Controlador para obter uma tarefa por ID
 exports.getTaskById = async (req, res) => {
   const taskId = req.params.taskId;
   try {
@@ -45,7 +41,6 @@ exports.getTaskById = async (req, res) => {
   }
 };
 
-// Controlador para atualizar uma tarefa por ID
 exports.updateTask = async (req, res) => {
   const taskId = req.params.taskId;
   const { title, description, status } = req.body;
@@ -62,7 +57,6 @@ exports.updateTask = async (req, res) => {
   }
 };
 
-// Controlador para excluir uma tarefa por ID
 exports.deleteTask = async (req, res) => {
   const taskId = req.params.taskId;
   try {
@@ -78,7 +72,6 @@ exports.deleteTask = async (req, res) => {
   }
 };
 
-// Controlador para buscar tarefas por status
 exports.getTasksByStatus = async (req, res) => {
   try {
     const { status } = req.params;
