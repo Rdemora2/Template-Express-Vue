@@ -1,17 +1,26 @@
 const Task = require('../models/task');
 
-const createTask = async (title, description, status) => {
+const createTask = async (title, description, status, userId) => {
   try {
-    const task = await Task.create({ title, description, status });
+    const task = await Task.create({ title, description, status, userId });
     return task;
   } catch (error) {
     throw new Error('Erro ao criar tarefa');
   }
 };
 
-const getAllTasks = async () => {
+const getAllTasks = async (userId) => {
   try {
-    const tasks = await Task.findAll();
+    let tasks;
+
+    if (userId) {
+      tasks = await Task.findAll({
+        where: { userId: userId },
+      });
+    } else {
+      tasks = await Task.findAll();
+    }
+
     return tasks;
   } catch (error) {
     throw new Error('Erro ao listar tarefas');

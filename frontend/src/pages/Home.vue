@@ -1,7 +1,10 @@
 <template>
     <v-container fluid class="home-container">
         <v-row align="center" justify="center">
-            <div>
+            <div v-if="isAuthenticated">
+                <TaskList />
+            </div>
+            <div v-else>
                 <v-card class="home-card" elevation="3">
                     <v-card-title class="headline">Bem-vindo à sua aplicação!</v-card-title>
                     <v-card-subtitle class="mb-4">Sou um template vue.js com backend express</v-card-subtitle>
@@ -12,8 +15,18 @@
 </template>
   
 <script>
+import TaskList from '@/views/tasks/TaskList.vue';
+
 export default {
     name: 'Home',
+    components: {
+        TaskList,
+    },
+    computed: {
+        isAuthenticated() {
+            return this.$store.getters.getToken !== null;
+        },
+    },
 };
 </script>
   

@@ -12,13 +12,17 @@ export const createTask = async (taskData) => {
   }
 };
 
-export const getTasks = async () => {
+export const getTasks = async (userId) => {
   try {
-    const response = await axios.get(BASE_URL);
+    const response = await axios.get(`${BASE_URL}/tasks`, {
+      params: {
+        userId: userId,
+      },
+    });
+
     return response.data;
   } catch (error) {
-    console.error('Error fetching tasks:', error);
-    throw error;
+    throw new Error('Erro ao buscar tarefas');
   }
 };
 
