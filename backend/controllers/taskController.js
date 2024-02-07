@@ -7,9 +7,7 @@ const handleErrors = (res, error, errorMessage) => {
 
 exports.createTask = async (req, res) => {
   try {
-    console.log(req.userId)
     const { title, description, status } = req.body;
-    console.log(req.userId)
 
     if (!req.userId) {
       return res.status(403).json({ error: 'Usuário não autenticado' });
@@ -25,13 +23,16 @@ exports.createTask = async (req, res) => {
 
 exports.getAllTasks = async (req, res) => {
   try {
-    const tasks = await taskService.getAllTasks();
+    const userId = req.userId;
+
+    const tasks = await taskService.getAllTasks(userId);
 
     return res.status(200).json(tasks);
   } catch (error) {
     return handleErrors(res, error, 'Erro ao listar tarefas');
   }
 };
+
 
 exports.getTaskById = async (req, res) => {
   const taskId = req.params.taskId;

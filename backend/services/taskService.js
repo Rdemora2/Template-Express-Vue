@@ -9,9 +9,18 @@ const createTask = async (title, description, status, userId) => {
   }
 };
 
-const getAllTasks = async () => {
+const getAllTasks = async (userId) => {
   try {
-    const tasks = await Task.findAll();
+    let tasks;
+
+    if (userId) {
+      tasks = await Task.findAll({
+        where: { userId: userId },
+      });
+    } else {
+      tasks = await Task.findAll();
+    }
+
     return tasks;
   } catch (error) {
     throw new Error('Erro ao listar tarefas');

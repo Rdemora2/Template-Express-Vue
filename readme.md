@@ -3,6 +3,9 @@
 ## Sobre o projeto:
 Seu backend foi organizado utilizando o padrão MSC (Model-Service-Controller) e, para maior segurança, foi utilizado token JWT para proteger as rotas de criação, atualização e exclusão de tarefas. Fora isso, também foi usada criptografia(bcrypt) para proteger a senha do usuário durante o fluxo de cadastro e login
 
+## Preview:
+http://ec2-18-219-149-156.us-east-2.compute.amazonaws.com:5000/
+
 # Tecnologias utilizadas
 ## Back end
 - Javascript
@@ -23,6 +26,9 @@ Seu backend foi organizado utilizando o padrão MSC (Model-Service-Controller) e
 
 ## Container
 - Docker
+
+## Hospedagem
+- Aws EC2
 
 # Como executar o projeto
 Pré-requisitos: Docker

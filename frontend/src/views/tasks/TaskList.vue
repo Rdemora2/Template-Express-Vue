@@ -1,3 +1,5 @@
+// TaskList.vue
+
 <template>
     <v-container>
         <v-list>
@@ -10,14 +12,14 @@
         </v-list>
     </v-container>
 </template>
-  
+
 <script>
 import { getTasks } from '@/api/taskApi';
 
 export default {
     data() {
         return {
-            tasks: []
+            tasks: [],
         };
     },
     created() {
@@ -26,14 +28,14 @@ export default {
     methods: {
         async fetchTasks() {
             try {
-                const taskList = await getTasks();
+                const userId = this.$store.getters.getToken !== null;
+                const taskList = await getTasks(userId);
 
                 this.tasks = taskList;
             } catch (error) {
-                console.error('Error fetching tasks:', error);
+                console.error('Erro ao buscar tarefas:', error);
             }
-        }
-    }
+        },
+    },
 };
 </script>
-  
