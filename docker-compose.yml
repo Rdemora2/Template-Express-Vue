@@ -10,6 +10,8 @@ services:
       POSTGRES_PASSWORD: rdemora2
     ports:
       - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
 
   backend:
     build:
@@ -32,3 +34,6 @@ services:
       - "5000:5000"
     depends_on:
       - backend
+
+volumes:
+  pg_data:
