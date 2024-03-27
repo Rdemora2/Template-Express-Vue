@@ -15,6 +15,8 @@ http://ec2-18-219-149-156.us-east-2.compute.amazonaws.com:5000/
 - Bcrypt
 - Jsonwebtoken
 - Sequelize
+- Jest
+- Supertest
 
 ## Front end
 - Javascript
