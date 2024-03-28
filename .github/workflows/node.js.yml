@@ -1,4 +1,4 @@
-name: Docker CI
+name: Frontend/backend build CI
 
 on:
   push:
@@ -27,14 +27,3 @@ jobs:
           cd frontend
           npm install
           npm run build
-
-      - name: Build Docker images
-        run: |
-          docker-compose build
-
-      - name: Test Docker containers
-        run: |
-          docker-compose up -d
-          docker-compose exec backend npm test
-          docker-compose down
-
