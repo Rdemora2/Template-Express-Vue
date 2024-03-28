@@ -1,0 +1,27 @@
+name: Frontend/backend build CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build and test backend
+        run: |
+          cd backend
+          npm install
+          npm test
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build

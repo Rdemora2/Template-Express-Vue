@@ -31,6 +31,7 @@ http://ec2-18-219-149-156.us-east-2.compute.amazonaws.com:5000/
 
 ## CI / CD
 - Verificação de coverage dos testes(atualmente exige no mínimo 30%)
+- Verificação de build do container docker
 
 ## Hospedagem
 - Aws EC2
